@@ -55,9 +55,16 @@ public class MyInputMethodService extends InputMethodService implements Keyboard
                 ic.sendKeyEvent(new KeyEvent(KeyEvent.ACTION_DOWN, KeyEvent.KEYCODE_ENTER));
                 break;
             case -2:
-                kv.setKeyboard(symbolKeyboard);
-                kv.setShifted(false);
-                kv.invalidateAllKeys();
+                if(kv.getKeyboard() == symbolKeyboard){
+                    kv.setKeyboard(keyboard);
+                    kv.setShifted(false);
+                    kv.invalidateAllKeys();
+                }else{
+                    kv.setKeyboard(symbolKeyboard);
+                    kv.setShifted(false);
+                    kv.invalidateAllKeys();
+                }
+
                 break;
 
             default:
@@ -90,6 +97,7 @@ public class MyInputMethodService extends InputMethodService implements Keyboard
             default: am.playSoundEffect(AudioManager.FX_KEYPRESS_STANDARD);
         }
     }
+
 
     @Override
     public void onText(CharSequence charSequence) {

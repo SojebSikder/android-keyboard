@@ -2,7 +2,8 @@
     android:horizontalGap="15px"
     android:keyWidth="10%p"
     android:keyHeight="45dp"
-    android:verticalGap="25px">
+    android:verticalGap="25px"
+    >
     <Row>
         <Key
             android:codes="49"
@@ -110,12 +111,13 @@
             android:keyIcon="@drawable/ic_baseline_close_black" />
     </Row>
     <Row android:rowEdgeFlags="bottom">
+<!--        <Key-->
+<!--            android:codes="-3"-->
+<!--            android:keyWidth="15%p"-->
+<!--            -->
+<!--            android:keyIcon="@drawable/ic_baseline_keyboard_return_24" />-->
         <Key
-            android:codes="-3"
-            android:keyWidth="15%p"
             android:keyEdgeFlags="left"
-            android:keyIcon="@drawable/ic_baseline_keyboard_return_24" />
-        <Key
             android:codes="-2"
             android:keyWidth="10%p"
             android:keyLabel="ABC" />
