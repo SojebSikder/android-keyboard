@@ -69,7 +69,7 @@
         <Key android:codes="10"
             android:keyWidth="20%p"
             android:keyEdgeFlags="right"
-            android:keyIcon="@drawable/ic_baseline_keyboard_return_24"
+            android:keyIcon="@drawable/ic_baseline_keyboard_return_black"
             />
 
 <!--        <Key android:codes="-4"-->
