@@ -3,12 +3,15 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/My Program/project/android/Skeyboard/app/src/main/res/drawable/ic_baseline_keyboard_capslock_black.xml" value="0.2462962962962963" />
+        <entry key="..\:/My Program/project/android/Skeyboard/app/src/main/res/drawable/space_button_drawable.xml" value="0.2462962962962963" />
         <entry key="..\:/My Program/project/android/Skeyboard/app/src/main/res/layout/activity_main.xml" value="0.17753623188405798" />
         <entry key="..\:/My Program/project/android/Skeyboard/app/src/main/res/layout/key_preview.xml" value="0.11904761904761904" />
         <entry key="..\:/My Program/project/android/Skeyboard/app/src/main/res/layout/keyboard_view.xml" value="0.1" />
         <entry key="..\:/My Program/project/android/Skeyboard/app/src/main/res/xml/keyboard_popup_template.xml" value="0.11904761904761904" />
         <entry key="..\:/My Program/project/android/Skeyboard/app/src/main/res/xml/method.xml" value="0.11904761904761904" />
         <entry key="..\:/My Program/project/android/Skeyboard/app/src/main/res/xml/number_pad.xml" value="0.11904761904761904" />
+        <entry key="..\:/My Program/project/android/Skeyboard/app/src/main/res/xml/space_button_drawable.xml" value="0.11904761904761904" />
         <entry key="..\:/My Program/project/android/Skeyboard/app/src/main/res/xml/symbols.xml" value="0.11904761904761904" />
       </map>
     </option>
