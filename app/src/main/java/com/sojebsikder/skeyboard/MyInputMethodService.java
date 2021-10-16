@@ -100,6 +100,13 @@ public class MyInputMethodService extends InputMethodService implements Keyboard
 
 
     @Override
+    public void onFinishInputView(boolean finishingInput) {
+        kv.setKeyboard(keyboard);
+        kv.setShifted(false);
+        kv.invalidateAllKeys();
+    }
+
+    @Override
     public void onText(CharSequence charSequence) {
 
     }
