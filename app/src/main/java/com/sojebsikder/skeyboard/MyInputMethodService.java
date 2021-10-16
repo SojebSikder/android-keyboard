@@ -12,6 +12,7 @@ public class MyInputMethodService extends InputMethodService implements Keyboard
 
     private KeyboardView kv;
     private Keyboard keyboard;
+    private Keyboard symbolKeyboard;
 
     private boolean caps = false;
 
@@ -20,6 +21,8 @@ public class MyInputMethodService extends InputMethodService implements Keyboard
         // get the KeyboardView and add our Keyboard layout to it
         kv = (KeyboardView)getLayoutInflater().inflate(R.layout.keyboard_view, null);
         keyboard = new Keyboard(this, R.xml.qwerty);
+        symbolKeyboard = new Keyboard(this, R.xml.symbols);
+
         kv.setKeyboard(keyboard);
         kv.setOnKeyboardActionListener(this);
         return kv;
@@ -51,6 +54,12 @@ public class MyInputMethodService extends InputMethodService implements Keyboard
             case Keyboard.KEYCODE_DONE:
                 ic.sendKeyEvent(new KeyEvent(KeyEvent.ACTION_DOWN, KeyEvent.KEYCODE_ENTER));
                 break;
+            case -2:
+                kv.setKeyboard(symbolKeyboard);
+                kv.setShifted(false);
+                kv.invalidateAllKeys();
+                break;
+
             default:
                 char code = (char)primaryCode;
                 if(Character.isLetter(code) && caps){
