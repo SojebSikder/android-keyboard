@@ -4,7 +4,6 @@ import android.inputmethodservice.InputMethodService;
 import android.inputmethodservice.Keyboard;
 import android.inputmethodservice.KeyboardView;
 import android.media.AudioManager;
-import android.text.TextUtils;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.InputConnection;
@@ -13,6 +12,7 @@ public class MyInputMethodService extends InputMethodService implements Keyboard
 
     private KeyboardView kv;
     private Keyboard keyboard;
+    private Keyboard symbolKeyboard;
 
     private boolean caps = false;
 
@@ -20,7 +20,9 @@ public class MyInputMethodService extends InputMethodService implements Keyboard
     public View onCreateInputView() {
         // get the KeyboardView and add our Keyboard layout to it
         kv = (KeyboardView)getLayoutInflater().inflate(R.layout.keyboard_view, null);
-        keyboard = new Keyboard(this, R.xml.number_pad);
+        keyboard = new Keyboard(this, R.xml.qwerty);
+        symbolKeyboard = new Keyboard(this, R.xml.symbols);
+
         kv.setKeyboard(keyboard);
         kv.setOnKeyboardActionListener(this);
         return kv;
@@ -52,11 +54,29 @@ public class MyInputMethodService extends InputMethodService implements Keyboard
             case Keyboard.KEYCODE_DONE:
                 ic.sendKeyEvent(new KeyEvent(KeyEvent.ACTION_DOWN, KeyEvent.KEYCODE_ENTER));
                 break;
+            case -2:
+                if(kv.getKeyboard() == symbolKeyboard){
+                    kv.setKeyboard(keyboard);
+                    kv.setShifted(false);
+                    kv.invalidateAllKeys();
+                }else{
+                    kv.setKeyboard(symbolKeyboard);
+                    kv.setShifted(false);
+                    kv.invalidateAllKeys();
+                }
+
+                break;
+
             default:
                 char code = (char)primaryCode;
                 if(Character.isLetter(code) && caps){
                     code = Character.toUpperCase(code);
                 }
+                // get back to shift key off
+                caps = false;
+                keyboard.setShifted(false);
+                kv.invalidateAllKeys();
+                // commit text
                 ic.commitText(String.valueOf(code),1);
         }
     }
@@ -76,6 +96,14 @@ public class MyInputMethodService extends InputMethodService implements Keyboard
                 break;
             default: am.playSoundEffect(AudioManager.FX_KEYPRESS_STANDARD);
         }
+    }
+
+
+    @Override
+    public void onFinishInputView(boolean finishingInput) {
+        kv.setKeyboard(keyboard);
+        kv.setShifted(false);
+        kv.invalidateAllKeys();
     }
 
     @Override
