@@ -56,6 +56,11 @@ public class MyInputMethodService extends InputMethodService implements Keyboard
                 if(Character.isLetter(code) && caps){
                     code = Character.toUpperCase(code);
                 }
+                // get back to shift key off
+                caps = false;
+                keyboard.setShifted(false);
+                kv.invalidateAllKeys();
+                // commit text
                 ic.commitText(String.valueOf(code),1);
         }
     }
