@@ -1,17 +1,23 @@
 package com.sojebsikder.skeyboard;
 
+import android.app.Dialog;
 import android.inputmethodservice.InputMethodService;
 import android.inputmethodservice.Keyboard;
 import android.inputmethodservice.KeyboardView;
 import android.media.AudioManager;
+import android.os.Build;
+import android.os.IBinder;
 import android.view.KeyEvent;
 import android.view.View;
+import android.view.Window;
 import android.view.inputmethod.InputConnection;
+import android.view.inputmethod.InputMethodManager;
 
 import net.hasnath.ridmikparser.RidmikParser;
 
 public class MyInputMethodService extends InputMethodService implements KeyboardView.OnKeyboardActionListener {
 
+    private InputMethodManager mInputMethodManager;
     private KeyboardView kv;
     private Keyboard keyboard;
     private Keyboard symbolKeyboard;
@@ -21,7 +27,8 @@ public class MyInputMethodService extends InputMethodService implements Keyboard
     @Override
     public View onCreateInputView() {
         // get the KeyboardView and add our Keyboard layout to it
-        kv = (KeyboardView)getLayoutInflater().inflate(R.layout.keyboard_view, null);
+        mInputMethodManager = (InputMethodManager)getSystemService(INPUT_METHOD_SERVICE);
+        kv = (KeyboardView) getLayoutInflater().inflate(R.layout.keyboard_view, null);
         keyboard = new Keyboard(this, R.xml.qwerty);
         symbolKeyboard = new Keyboard(this, R.xml.symbols);
 
@@ -40,12 +47,24 @@ public class MyInputMethodService extends InputMethodService implements Keyboard
 
     }
 
+    private IBinder getToken() {
+        final Dialog dialog = getWindow();
+        if (dialog == null) {
+            return null;
+        }
+        final Window window = dialog.getWindow();
+        if (window == null) {
+            return null;
+        }
+        return window.getAttributes().token;
+    }
+
     @Override
     public void onKey(int primaryCode, int[] keyCodes) {
         InputConnection ic = getCurrentInputConnection();
         playClick(primaryCode);
-        switch(primaryCode){
-            case Keyboard.KEYCODE_DELETE :
+        switch (primaryCode) {
+            case Keyboard.KEYCODE_DELETE:
                 ic.deleteSurroundingText(1, 0);
                 break;
             case Keyboard.KEYCODE_SHIFT:
@@ -57,11 +76,11 @@ public class MyInputMethodService extends InputMethodService implements Keyboard
                 ic.sendKeyEvent(new KeyEvent(KeyEvent.ACTION_DOWN, KeyEvent.KEYCODE_ENTER));
                 break;
             case -2:
-                if(kv.getKeyboard() == symbolKeyboard){
+                if (kv.getKeyboard() == symbolKeyboard) {
                     kv.setKeyboard(keyboard);
                     kv.setShifted(false);
                     kv.invalidateAllKeys();
-                }else{
+                } else {
                     kv.setKeyboard(symbolKeyboard);
                     kv.setShifted(false);
                     kv.invalidateAllKeys();
@@ -69,8 +88,8 @@ public class MyInputMethodService extends InputMethodService implements Keyboard
                 break;
 
             default:
-                char code = (char)primaryCode;
-                if(Character.isLetter(code) && caps){
+                char code = (char) primaryCode;
+                if (Character.isLetter(code) && caps) {
                     code = Character.toUpperCase(code);
                 }
                 // get back to shift key off
@@ -82,13 +101,13 @@ public class MyInputMethodService extends InputMethodService implements Keyboard
                 //RidmikParser parser = new RidmikParser();
                 //String bangla = parser.toBangla(String.valueOf(code));
 
-                ic.commitText(String.valueOf(code),1);
+                ic.commitText(String.valueOf(code), 1);
         }
     }
 
-    private void playClick(int keyCode){
-        AudioManager am = (AudioManager)getSystemService(AUDIO_SERVICE);
-        switch(keyCode){
+    private void playClick(int keyCode) {
+        AudioManager am = (AudioManager) getSystemService(AUDIO_SERVICE);
+        switch (keyCode) {
             case 32:
                 am.playSoundEffect(AudioManager.FX_KEYPRESS_SPACEBAR);
                 break;
@@ -99,10 +118,15 @@ public class MyInputMethodService extends InputMethodService implements Keyboard
             case Keyboard.KEYCODE_DELETE:
                 am.playSoundEffect(AudioManager.FX_KEYPRESS_DELETE);
                 break;
-            default: am.playSoundEffect(AudioManager.FX_KEYPRESS_STANDARD);
+            default:
+                am.playSoundEffect(AudioManager.FX_KEYPRESS_STANDARD);
         }
     }
 
+    @Override
+    public View onCreateCandidatesView() {
+        return super.onCreateCandidatesView();
+    }
 
     @Override
     public void onFinishInputView(boolean finishingInput) {
