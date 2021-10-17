@@ -8,6 +8,8 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.InputConnection;
 
+import net.hasnath.ridmikparser.RidmikParser;
+
 public class MyInputMethodService extends InputMethodService implements KeyboardView.OnKeyboardActionListener {
 
     private KeyboardView kv;
@@ -64,7 +66,6 @@ public class MyInputMethodService extends InputMethodService implements Keyboard
                     kv.setShifted(false);
                     kv.invalidateAllKeys();
                 }
-
                 break;
 
             default:
@@ -77,6 +78,10 @@ public class MyInputMethodService extends InputMethodService implements Keyboard
                 keyboard.setShifted(false);
                 kv.invalidateAllKeys();
                 // commit text
+
+                //RidmikParser parser = new RidmikParser();
+                //String bangla = parser.toBangla(String.valueOf(code));
+
                 ic.commitText(String.valueOf(code),1);
         }
     }
