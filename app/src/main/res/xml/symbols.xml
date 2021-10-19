@@ -125,19 +125,20 @@
             android:codes: -101 is not a framework-defined key code but a key code that is
             privately defined in com.example.android.softkeyboard.LatinKeyboardView.
         -->
+
         <Key
-            android:codes="-101"
-            android:keyWidth="10%p"
-            android:keyIcon="@drawable/ic_baseline_language_black" />
+            android:codes="44"
+            android:keyWidth="15%p"
+            android:keyLabel="," />
+
         <Key
             android:codes="32"
             android:isRepeatable="true"
             android:keyWidth="40%p"
             android:keyLabel="SPACE" />
-        <Key
-            android:codes="44"
-            android:keyWidth="15%p"
-            android:keyLabel="," />
+        
+        <Key android:codes="46" android:keyLabel="."/>
+
         <Key
             android:codes="10"
             android:keyWidth="20%p"
