@@ -6,32 +6,33 @@
     >
     <Row>
         <Key
-            android:codes="113,49"
+            android:codes="u0985"
             android:keyEdgeFlags="left"
-            android:keyLabel="q"
+            android:keyLabel="অ"
             android:popupCharacters="1Q"
             android:popupKeyboard="@xml/keyboard_popup_template"/>
 
-        <Key android:codes="119,50" android:keyLabel="w"/>
-        <Key android:codes="101,51" android:keyLabel="e"/>
-        <Key android:codes="114,52" android:keyLabel="r"/>
-        <Key android:codes="116,53" android:keyLabel="t"/>
-        <Key android:codes="121,54" android:keyLabel="y"/>
-        <Key android:codes="117,55" android:keyLabel="u"/>
-        <Key android:codes="105,56" android:keyLabel="i"/>
-        <Key android:codes="111,57" android:keyLabel="o"/>
-        <Key android:codes="112,48" android:keyEdgeFlags="right" android:keyLabel="p"/>
+        <Key android:codes="0986" android:keyLabel="আ"/>
+        <Key android:codes="0987" android:keyLabel="ই"/>
+        <Key android:codes="114,52" android:keyLabel="ঈ"/>
+        <Key android:codes="116,53" android:keyLabel="উ"/>
+        <Key android:codes="121,54" android:keyLabel="ঊ"/>
+        <Key android:codes="117,55" android:keyLabel="এ"/>
+        <Key android:codes="105,56" android:keyLabel="ঐ"/>
+        <Key android:codes="111,57" android:keyLabel="ও"/>
+        <Key android:codes="112,48" android:keyEdgeFlags="right" android:keyLabel="ঔ"/>
     </Row>
     <Row>
-        <Key android:codes="97" android:horizontalGap="1%p"  android:keyEdgeFlags="left" android:keyLabel="a"/>
-        <Key android:codes="115" android:keyLabel="s"/>
-        <Key android:codes="100" android:keyLabel="d"/>
-        <Key android:codes="102" android:keyLabel="f"/>
-        <Key android:codes="103" android:keyLabel="g"/>
-        <Key android:codes="104" android:keyLabel="h"/>
-        <Key android:codes="106" android:keyLabel="j"/>
-        <Key android:codes="107" android:keyLabel="k"/>
-        <Key android:codes="108" android:keyEdgeFlags="right" android:keyLabel="l"/>
+        <Key android:codes="\u0995" android:horizontalGap="1%p"  android:keyEdgeFlags="left" android:keyLabel="ক"/>
+        <Key android:codes="115" android:keyLabel="খ"/>
+        <Key android:codes="100" android:keyLabel="গ"/>
+        <Key android:codes="102" android:keyLabel="ঘ"/>
+        <Key android:codes="103" android:keyLabel="ঙ"/>
+        <Key android:codes="104" android:keyLabel="চ"/>
+        <Key android:codes="106" android:keyLabel="ছ"/>
+        <Key android:codes="107" android:keyLabel="জ"/>
+        <Key android:codes="107" android:keyLabel="ঝ"/>
+        <Key android:codes="108" android:keyEdgeFlags="right" android:keyLabel="ঞ"/>
 <!--        <Key android:codes="35,64" android:keyLabel="\# \@" android:keyEdgeFlags="right"/>-->
     </Row>
     <Row>
@@ -60,7 +61,6 @@
 <!--        <Key android:codes="47" android:keyLabel="/" android:keyWidth="10%p" />-->
         <Key android:codes="-2" android:keyWidth="10%p" android:keyEdgeFlags="left" android:keyLabel="123"/>
         <Key android:codes="44" android:keyWidth="10%p"   android:keyLabel=","/>
-<!--        <Key android:codes="45" android:keyWidth="10%p" android:keyIcon="@drawable/ic_baseline_language_black" />-->
 
 <!--        here will be imoji icon-->
 

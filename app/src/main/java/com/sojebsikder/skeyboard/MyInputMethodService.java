@@ -21,6 +21,7 @@ public class MyInputMethodService extends InputMethodService implements Keyboard
     private KeyboardView kv;
     private Keyboard keyboard;
     private Keyboard symbolKeyboard;
+    private Keyboard banglaKeyboard;
 
     private boolean caps = false;
 
@@ -31,6 +32,7 @@ public class MyInputMethodService extends InputMethodService implements Keyboard
         kv = (KeyboardView) getLayoutInflater().inflate(R.layout.keyboard_view, null);
         keyboard = new Keyboard(this, R.xml.qwerty);
         symbolKeyboard = new Keyboard(this, R.xml.symbols);
+        banglaKeyboard = new Keyboard(this, R.xml.qwerty_bangla_keyboard);
 
         kv.setKeyboard(keyboard);
         kv.setOnKeyboardActionListener(this);
@@ -76,15 +78,24 @@ public class MyInputMethodService extends InputMethodService implements Keyboard
                 ic.sendKeyEvent(new KeyEvent(KeyEvent.ACTION_DOWN, KeyEvent.KEYCODE_ENTER));
                 break;
             case -2:
+                // change to symble keyboard
                 if (kv.getKeyboard() == symbolKeyboard) {
                     kv.setKeyboard(keyboard);
-                    kv.setShifted(false);
-                    kv.invalidateAllKeys();
                 } else {
                     kv.setKeyboard(symbolKeyboard);
-                    kv.setShifted(false);
-                    kv.invalidateAllKeys();
                 }
+                kv.setShifted(false);
+                kv.invalidateAllKeys();
+                break;
+            case 45:
+                // change keyboard to bangla
+                if (kv.getKeyboard() == banglaKeyboard) {
+                    kv.setKeyboard(keyboard);
+                } else {
+                    kv.setKeyboard(banglaKeyboard);
+                }
+                kv.setShifted(false);
+                kv.invalidateAllKeys();
                 break;
 
             default:

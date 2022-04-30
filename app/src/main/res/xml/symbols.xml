@@ -136,7 +136,7 @@
             android:isRepeatable="true"
             android:keyWidth="40%p"
             android:keyLabel="SPACE" />
-        
+
         <Key android:codes="46" android:keyLabel="."/>
 
         <Key
