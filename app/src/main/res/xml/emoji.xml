@@ -1,0 +1,20 @@
+<Keyboard xmlns:android="http://schemas.android.com/apk/res/android"
+    android:horizontalGap="15px"
+    android:keyWidth="10%p"
+    android:keyHeight="45dp"
+    android:verticalGap="25px">
+
+    <Row android:rowEdgeFlags="bottom">
+        <!--        <Key android:codes="47" android:keyLabel="/" android:keyWidth="10%p" />-->
+        <Key
+            android:codes="-2"
+            android:keyWidth="10%p"
+            android:keyEdgeFlags="left"
+            android:keyLabel="ABC" />
+
+        <Key
+            android:codes="0x2665"
+            android:keyWidth="10%p"
+            android:keyLabel="\u2665" />
+    </Row>
+</Keyboard>
