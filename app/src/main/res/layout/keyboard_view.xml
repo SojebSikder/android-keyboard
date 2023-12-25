@@ -5,13 +5,16 @@
     android:id="@+id/keyboard_view"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:paddingTop="8dp"
     android:layout_alignParentBottom="true"
     android:shadowColor="@android:color/transparent"
     android:background="#E9EAEE"
     android:textColor="@android:color/black"
     android:keyTextColor="@android:color/black"
     android:keyBackground="@drawable/space_button_drawable"
-    android:keyPreviewLayout="@layout/key_preview">
+    android:keyPreviewLayout="@layout/key_preview"
+    android:popupLayout="@layout/keyboard_popup_layout"
+    >
 
 </android.inputmethodservice.KeyboardView>
 
